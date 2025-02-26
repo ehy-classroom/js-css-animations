@@ -1,0 +1,52 @@
+/*---------------------
+Version: 1.0.0
+-----------------------*/
+
+
+/*---------------------
+RESET
+-----------------------*/
+
+*,
+*:before,
+*:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+
+/*---------------------
+TYPOGRAPHY
+-----------------------*/
+
+:root {
+    font-family: Inter, sans-serif;
+    font-feature-settings: 'liga' 1, 'calt' 1;
+    /* fix for Chrome */
+}
+
+@supports (font-variation-settings: normal) {
+    :root {
+        font-family: InterVariable, sans-serif;
+    }
+}
+
+body {
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+/*---------------------
+COLOR
+-----------------------*/
+
+/**-----
+Color Vars/Tokens
+-----**/
+
+:root {
+    
+}

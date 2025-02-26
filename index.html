@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS CSS Animations</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Animationen mit CSS und JavaScript</h1>
+        </div>
+    </header>
+    <main>
+        <section class="anim-example anim-example-css anim-example-css-001">
+            <div class="container">
+                <!-- 
+                Hier ein Beispiel für eine CSS Animation. 
+                -->
+                <div class="box"></div>
+            </div>
+            <style>
+                /* 
+                Die Klasse 'anim-example-css-001 .box' definiert die Animationseigenschaften für das Element mit der Klasse 'box' innerhalb der 'anim-example-css-001' Section.
+                */
+                .anim-example-css-001 .box {
+                    /* 
+                    Die 'animation' Eigenschaft kombiniert mehrere Animationseigenschaften in einer einzigen Deklaration.
+                    'move' ist der Name der Animation (definiert durch @keyframes).
+                    '2s' gibt die Dauer der Animation an (2 Sekunden).
+                    'infinite' bedeutet, dass die Animation unendlich oft wiederholt wird.
+                    'alternate' bewirkt, dass die Animation abwechselnd vorwärts und rückwärts abgespielt wird.
+                    */
+                    animation: move 2s infinite alternate;
+                }
+
+                /* 
+                Der @keyframes-Regelsatz definiert die einzelnen Schritte der Animation.
+                'move' ist der Name der Animation, der in der 'animation' Eigenschaft verwendet wird.
+                */
+                @keyframes move {
+
+                    /* 
+                    Der 'from' Block definiert den Startzustand der Animation.
+                    'transform: translateX(0)' bedeutet, dass das Element zu Beginn der Animation keine horizontale Verschiebung hat.
+                    */
+                    from {
+                        transform: translateX(0);
+                    }
+
+                    /* 
+                    Der 'to' Block definiert den Endzustand der Animation.
+                    'transform: translateX(100px)' bedeutet, dass das Element am Ende der Animation um 100 Pixel nach rechts verschoben wird.
+                    */
+                    to {
+                        transform: translateX(100px);
+                    }
+                }
+            </style>
+        </section>
+
+        <section class="anim-example anim-example-js anim-example-js-001">
+            <div class="container">
+                <div id="js-box" class="box" style="background-color: green;"></div>
+            </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    // Holen Sie das Element mit der ID 'js-box'
+                    const box = document.getElementById('js-box');
+                    // Initialisieren Sie die Position und die Richtung der Bewegung
+                    let position = 0;
+                    let direction = 1;
+
+                    // Definieren Sie die Animationsfunktion
+                    const animate = () => {
+                        // Erhöhen oder verringern Sie die Position basierend auf der Richtung
+                        position += direction;
+                        // Setzen Sie die neue Position des Elements
+                        box.style.transform = `translateX(${position}px)`;
+
+                        // Wenn die Position 100 erreicht oder 0 unterschreitet, ändern Sie die Richtung
+                        if (position >= 100 || position <= 0) {
+                            direction *= -1;
+                        }
+
+                        // Fordern Sie den nächsten Frame der Animation an
+                        requestAnimationFrame(animate);
+                    };
+
+                    // Starten Sie die Animation
+                    animate();
+                });
+            </script>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+           <p>© 2025 Enno Hyttrek</p>
+        </div>
+    </footer>
+    <script src="assets/js/scripts.js"></script>
+</body>
+
+</html>
